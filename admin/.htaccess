@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+
+RewriteRule ^blog-detay-([0-9a-zA-Z-_]+)-([0-9]+)$  blog-detay.php?sef=$1&blog_id=$2 [L,QSA]
+RewriteRule ^galeri-detay-([0-9a-zA-Z-_]+)-([0-9]+)$  galeri-detay.php?sef=$1&galeri_id=$2 [L,QSA]
+ErrorDocument 404 https://www.yazilimyolcusu.com/404
